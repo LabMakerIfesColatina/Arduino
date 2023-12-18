@@ -21,7 +21,7 @@ void setup() {
 
 void loop() {
   // tempo para andar uma cedula!
-  int tempo = 2200;
+  int tempo = 1200;
   int i;
   if (Serial.available() > 0) {
     String stringSerial = Serial.readStringUntil('\n'); 
