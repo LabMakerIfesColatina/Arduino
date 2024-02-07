@@ -83,8 +83,8 @@ void virarEsquerda90(){
   motorDireito.setPwm(255);
   motorEsquerdo.setPwm(255);
 
-  motorDireito.rodarHorario();
   motorEsquerdo.rodarHorario();
+  motorDireito.rodarHorario();
         
   delay(1200);  
   parar();
