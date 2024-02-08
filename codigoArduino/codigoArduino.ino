@@ -1,6 +1,7 @@
 #include "src/domain/motor.h"
 
 
+
 #define pwm1 9 // Motor Direito
 #define ingA1 4 // Motor Direito
 #define ingB1 3 // Motor Direito
@@ -9,14 +10,15 @@
 #define ingA2 6 // Motor Esquerdo
 #define ingB2 5 // Motor Esquerdo
 
-//mpu 6050
+
 
 Motor motorDireito(pwm1, ingA1, ingB1);
 Motor motorEsquerdo(pwm2, ingA2, ingB2);
 
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
+ 
 }
 
 void loop() {
@@ -30,6 +32,7 @@ void loop() {
       delay(1000); 
     }
   }
+  
 }
 
 void controlarMovimento(char direcao, int tempo){
