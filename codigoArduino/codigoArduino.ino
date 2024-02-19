@@ -17,8 +17,7 @@ Motor motorEsquerdo(pwm2, ingA2, ingB2);
 
 
 void setup() {
-  Serial.begin(115200);
- 
+  Serial.begin(9600);
 }
 
 void loop() {
@@ -67,8 +66,8 @@ void andarFrente(int tempo){
   motorDireito.rodarHorario();
   motorEsquerdo.rodarAntiHorario();
 
-  delay(tempo);  
-  parar();
+  //delay(tempo);  
+  //parar();
 }
 
 void andarTras(int tempo){
@@ -78,8 +77,8 @@ void andarTras(int tempo){
   motorDireito.rodarAntiHorario();
   motorEsquerdo.rodarHorario();
 
-  delay(tempo);  
-  parar();
+  //delay(tempo);  
+  //parar();
 }
 
 void virarEsquerda90(){
