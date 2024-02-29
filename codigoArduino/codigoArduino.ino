@@ -1,6 +1,6 @@
+#include <ros.h>
+#include <std_msgs/String.h>
 #include "src/domain/motor.h"
-
-
 
 #define pwm1 9 // Motor Direito
 #define ingA1 4 // Motor Direito
@@ -10,28 +10,35 @@
 #define ingA2 6 // Motor Esquerdo
 #define ingB2 5 // Motor Esquerdo
 
-
-
 Motor motorDireito(pwm1, ingA1, ingB1);
 Motor motorEsquerdo(pwm2, ingA2, ingB2);
 
 
+void mensagemRecebida(const std_msgs::String& msg);
+
+ros::NodeHandle nh;
+
+
+ros::Subscriber<std_msgs::String> sub("/serial_arduino", &mensagemRecebida);
+
+
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(57600);
+  nh.initNode();
+  nh.subscribe(sub);
 }
 
 void loop() {
-  // tempo para andar uma cedula!
-  int tempo = 1200;
-  int i;
-  if (Serial.available() > 0) {
-    String stringSerial = Serial.readStringUntil('\n'); 
-    for (i = 0; i < stringSerial.length(); i++) {
-      controlarMovimento(stringSerial.charAt(i),tempo);
-      delay(1000); 
-    }
+  nh.spinOnce();
+}
+
+void mensagemRecebida(const std_msgs::String& msg) {
+  String comando = msg.data;
+  printf("%s", &comando);
+  for (int i = 0; i < comando.length(); i++) {
+    controlarMovimento(comando.charAt(i), 1200);
+    delay(1000);
   }
-  
 }
 
 void controlarMovimento(char direcao, int tempo){
