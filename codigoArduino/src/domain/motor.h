@@ -1,3 +1,6 @@
+#ifndef MOTOR_H
+#define MOTOR_H
+
 class Motor{
   private:
     int pinoPwm;
@@ -38,3 +41,5 @@ class Motor{
       digitalWrite(this->pinoIngB, LOW);
     }
 };
+
+#endif 
