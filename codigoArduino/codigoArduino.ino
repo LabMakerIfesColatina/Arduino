@@ -10,7 +10,7 @@
 #define ingA2 6 // Motor Esquerdo
 #define ingB2 5 // Motor Esquerdo
 
-Motor motorDireito(pwm1, ingA1, ingB1);
+Motor motorDireito(pwm1, ingA1, ingB1); 
 Motor motorEsquerdo(pwm2, ingA2, ingB2);
 
 
@@ -18,8 +18,7 @@ void mensagemRecebida(const std_msgs::String& msg);
 
 ros::NodeHandle nh;
 
-
-ros::Subscriber<std_msgs::String> sub("/serial_arduino", &mensagemRecebida);
+ros::Subscriber <std_msgs::String> sub("/serial_arduino", &mensagemRecebida);
 
 
 void setup() {
@@ -32,13 +31,15 @@ void loop() {
   nh.spinOnce();
 }
 
-void mensagemRecebida(const std_msgs::String& msg) {
-  String comando = msg.data;
-  printf("%s", &comando);
-  for (int i = 0; i < comando.length(); i++) {
-    controlarMovimento(comando.charAt(i), 1200);
-    delay(1000);
-  }
+void mensagemRecebida(const std_msgs::String & msg) {
+
+  char comando = msg.data[0];
+  //printf("%s", &comando);
+  //Serial.println(comando);
+  //for (int i = 0; i < comando; i++) {
+  controlarMovimento(comando, 1200);
+  delay(1000);
+  //}
 }
 
 void controlarMovimento(char direcao, int tempo){
@@ -95,8 +96,8 @@ void virarEsquerda90(){
   motorEsquerdo.rodarHorario();
   motorDireito.rodarHorario();
         
-  delay(1200);  
-  parar();
+  //delay(1200);  
+  //parar();
 }
 
 void virarDireita90(){
@@ -106,8 +107,8 @@ void virarDireita90(){
   motorDireito.rodarAntiHorario();
   motorEsquerdo.rodarAntiHorario();
       
-  delay(1200);   
-  parar();
+  //delay(1200);   
+  //parar();
 }
 
 void parar(){
