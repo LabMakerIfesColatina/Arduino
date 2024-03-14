@@ -10,22 +10,34 @@ class Gerencia{
         Motor motorEsquerdo;
         
         void andarFrente(){
+            this->motorDireito.setPwm(128);
+            this->motorEsquerdo.setPwm(128);
+
             this->motorDireito.rodarHorario();
             this->motorEsquerdo.rodarAntiHorario();
         }
 
         void andarTras(){
+            this->motorDireito.setPwm(128);
+            this->motorEsquerdo.setPwm(128);
+
             this->motorDireito.rodarAntiHorario();
             this->motorEsquerdo.rodarHorario();
 
         }
 
         void virarEsquerda(){
+            this->motorDireito.setPwm(200);
+            this->motorEsquerdo.setPwm(200);
+
             this->motorEsquerdo.rodarHorario();
             this->motorDireito.rodarHorario();
         }
 
         void virarDireita(){
+            this->motorDireito.setPwm(200);
+            this->motorEsquerdo.setPwm(200);
+
             this->motorDireito.rodarAntiHorario();
             this->motorEsquerdo.rodarAntiHorario();
 
@@ -38,8 +50,8 @@ class Gerencia{
 
     public:
         Gerencia(Motor mD, Motor mE) : motorDireito(mD), motorEsquerdo(mE) {
-            this->motorDireito.setPwm(120);
-            this->motorEsquerdo.setPwm(120);
+            //this->motorDireito.setPwm(120);
+            //this->motorEsquerdo.setPwm(120);
         }
 
         void movimentacao(char direcao, int constMovimentacao){
