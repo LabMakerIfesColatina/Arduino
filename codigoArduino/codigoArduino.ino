@@ -16,7 +16,7 @@ Motor motorEsquerdo(pwm2, ingA2, ingB2);
 
 Gerencia gerencia(motorDireito,motorEsquerdo);
 
-void mensagemRecebida(const std_msgs::String& msg);
+void mensagemRecebida(const std_msgs::String &msg);
 
 int constanciaMov = 1;
 
@@ -33,7 +33,7 @@ void loop() {
   nh.spinOnce();
 }
 
-void mensagemRecebida(const std_msgs::String & msg) {
+void mensagemRecebida(const std_msgs::String &msg) {
   char comando = msg.data[0];
 
   if(comando=='T'){constanciaMov*=-1;} //ALTERA A CONSTANCIA DO MOVIMENTO DO OZORIN {-1=POR CLICK}/{1=CONSTANTE}
