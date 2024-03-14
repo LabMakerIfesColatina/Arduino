@@ -8,7 +8,7 @@ class Motor{
     int pinoIngB;
 
     int pwm;
-  
+
   public:
     Motor(int pinoPwm, int pinoIngA, int pinoIngB){
       this->pinoPwm = pinoPwm;

@@ -18,6 +18,7 @@ Gerencia gerencia(motorDireito,motorEsquerdo);
 
 void mensagemRecebida(const std_msgs::String& msg);
 
+int constanciaMov = 1;
 
 ros::NodeHandle nh;
 ros::Subscriber <std_msgs::String> sub("/serial_arduino", &mensagemRecebida);
@@ -34,7 +35,10 @@ void loop() {
 
 void mensagemRecebida(const std_msgs::String & msg) {
   char comando = msg.data[0];
-  gerencia.movimentacao(comando);
+
+  if(comando=='T'){constanciaMov*=-1;} //ALTERA A CONSTANCIA DO MOVIMENTO DO OZORIN {-1=POR CLICK}/{1=CONSTANTE}
+
+  gerencia.movimentacao(comando, constanciaMov);
 }
 
 
