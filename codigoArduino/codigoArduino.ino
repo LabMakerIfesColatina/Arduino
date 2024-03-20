@@ -43,6 +43,48 @@ void mensagemRecebida(const std_msgs::String &msg) {
 }
 
 
+
+
+
+/*
+//ky-040 ENCODER!!!
+
+
+#include <Arduino.h>
+// Definindo os pinos do KY-040
+#define pinDT 31
+#define pinCLK 30
+
+// Variáveis para armazenar as leituras
+volatile int leituraAtualDT;
+volatile int leituraAnteriorDT;
+
+void setup() {
+    Serial.begin(57600);
+    Serial.println("Iniciando Leitura...");
+
+    pinMode(pinDT, INPUT_PULLUP);
+    pinMode(pinCLK, INPUT);
+
+    leituraAnteriorDT = digitalRead(pinDT);
+}
+
+void loop() {
+    leituraAtualDT = digitalRead(pinDT);
+
+    if (leituraAtualDT != leituraAnteriorDT) {
+        if (digitalRead(pinCLK) == leituraAtualDT) {
+            Serial.println("Sentido horário");
+        } else {
+            Serial.println("Sentido anti-horário");
+        }
+    }
+
+    leituraAnteriorDT = leituraAtualDT;
+}
+*/
+
+
 /*
 
 // Reference the I2C Library
