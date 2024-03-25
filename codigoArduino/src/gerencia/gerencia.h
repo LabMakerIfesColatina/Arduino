@@ -9,7 +9,7 @@ class Gerencia{
         Motor motorDireito;
         Motor motorEsquerdo;
         
-        int pwmFrente = 180;
+        int pwmFrente = 140;
         int pwmTras = 150;
         int pwmEsquerda = 200;
         int pwmDireita = 200;
